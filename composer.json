@@ -1,0 +1,14 @@
+{
+  "name": "masterminds/fortissimo-cli",
+  "description": "Some fortissimo cli application helpers.",
+  "require": {
+    "masterminds/fortissimo": "2.x-dev",
+    "symfony/console": "dev-master"
+  },
+  "authors": [
+    {
+      "name": "Matt Farina",
+      "email": "matt@mattfarina.com"
+    }
+  ]
+}
