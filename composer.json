@@ -3,7 +3,7 @@
   "description": "Some fortissimo cli application helpers.",
   "require": {
     "masterminds/fortissimo": "2.x-dev",
-    "symfony/console": "dev-master"
+    "symfony/console": "2.x"
   },
   "authors": [
     {
