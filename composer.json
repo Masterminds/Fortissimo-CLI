@@ -10,5 +10,8 @@
       "name": "Matt Farina",
       "email": "matt@mattfarina.com"
     }
-  ]
+  ],
+  "autoload": {
+    "psr-0": { "Fortissimo\\CLI": "src/" }
+  }
 }
