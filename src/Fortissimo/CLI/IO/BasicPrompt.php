@@ -19,15 +19,11 @@ class BasicPrompt implements Prompt {
    * @param Fortissimo::CLI::IO::Output $output
    *   Inject the output IO.
    */
-  public function __construct(BasicOutput $output, DialogHelper $helper = NULL) {
+  public function __construct(Output $output) {
     $this->output = $output;
 
-    if (is_null($helper)) {
-      $this->helper = new DialogHelper();
-    }
-    else {
-      $this->helper = $helper;
-    }
+    // @todo allow the helper to be passed in.
+    $this->helper = new DialogHelper();
   }
 
   /**
