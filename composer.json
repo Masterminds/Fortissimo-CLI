@@ -1,5 +1,5 @@
 {
-  "name": "masterminds/fortissimo-cli",
+  "name": "Masterminds/Fortissimo-CLI",
   "description": "Some fortissimo cli application helpers.",
   "require": {
     "masterminds/fortissimo": "2.x-dev",
