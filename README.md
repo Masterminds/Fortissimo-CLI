@@ -2,7 +2,7 @@
 This project provides additional components to aide in the creation of CLI (console) applications with [Fortissimo](https://github.com/Masterminds/Fortissimo).
 
 ## Components
-There are a number of useful components and commands included covering a runtime, Phar file manipulation, and I/O.
+There are a number of useful components and commands included covering a runtime, [Phar](http://php.net/manual/en/book.phar.php) file manipulation, and I/O.
 
 ### Runtime
 Fortissimo executes within a runtime and there are difference ones for the web, CLI, or if you want to write a custom one. The runtime provided here is designed to work with CLI applications and does some work for you. For example, it sets up input and output utilities on the execution context.
