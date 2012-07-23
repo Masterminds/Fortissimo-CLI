@@ -11,6 +11,8 @@
       "email": "matt@mattfarina.com"
     }
   ],
+  "license": "MIT",
+  "keywords": ["Console","CLI"],
   "autoload": {
     "psr-0": { "Fortissimo\\CLI": "src/" }
   }
