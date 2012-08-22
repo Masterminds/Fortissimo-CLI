@@ -6,6 +6,8 @@
 
 namespace Fortissimo\CLI;
 
+use Symfony\Component\Console\Input\InputOption;
+
 class ParseOptions extends \Fortissimo\Command\Base {
 
   public function expects() {
@@ -29,7 +31,10 @@ class ParseOptions extends \Fortissimo\Command\Base {
     $helpText = $this->param('help');
     $options = $this->param('options', NULL);
     $usage = $this->param('usage');
-    $output = $this->param('output');  
+    $output = $this->param('output'); 
+
+    // Add Help to the optionSpec
+    $optionSpec->addOption(new InputOption('help', NULL, InputOption::VALUE_NONE, 'Display the help message.')); 
 
     // strip out the command before acting on the options.
     $target = $this->getFirstArgument($options);
@@ -40,7 +45,13 @@ class ParseOptions extends \Fortissimo\Command\Base {
       $argv = new \Symfony\Component\Console\Input\ArgvInput($options, $optionSpec);
     }
     catch (\Exception $e) {
+
+      if ($this->helpArgSet($options)) {
+        $this->renderOutput($optionSpec, $helpText, $usage, $output);
+      }
+
       $output->writeln('<comment>' . $e->getMessage() . '</comment>');
+
       exit;
     }
 
@@ -62,6 +73,19 @@ class ParseOptions extends \Fortissimo\Command\Base {
         continue;
       }
       return $arg;
+    }
+  }
+
+  protected function helpArgSet($argv) {
+    
+    // Remove the application name.
+    array_shift($argv);
+    
+    foreach ($argv as $arg) {
+      if ($arg === '--help') {
+        return TRUE;
+      }
+      return FALSE;
     }
   }
 
