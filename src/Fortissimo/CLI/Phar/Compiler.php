@@ -3,6 +3,7 @@
 namespace Fortissimo\CLI\Phar;
 
 use Symfony\Component\Finder\Finder;
+use Symfony\Component\Finder\Adapter\PhpAdapter;
 
 class Compiler {
   public function compile($pharFile, $name = 'foo-app', array $files = array(), array $directories = array(), $stub_file, $base_path, $name_pattern = '*.php', $strip = TRUE) {
@@ -20,6 +21,14 @@ class Compiler {
 
     // CLI Component files
     $iterator = Finder::create()->files()->name($name_pattern)->in($directories);
+
+    // There is some strange case where the higher priority adapters are not working
+    // by default but the PHP one works just fine to add all the files. So, we
+    // are specifying this. Since this shouldn't be how we do this.
+    // @todo fix the finder adapter.
+    $iterator->removeAdapters();
+    $iterator->addAdapter(new PhpAdapter());
+
     $files = array_merge($files, iterator_to_array($iterator));
     foreach ($files as $file) {
       $path = str_replace($base_path . '/', '', $file);
