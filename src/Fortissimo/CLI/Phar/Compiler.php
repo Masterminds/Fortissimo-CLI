@@ -5,7 +5,7 @@ namespace Fortissimo\CLI\Phar;
 use Symfony\Component\Finder\Finder;
 
 class Compiler {
-  public function compile($pharFile, $name = 'foo-app', array $files = array(), array $directories = array(), $stub_file, $base_path, $name_pattern = '*.php') {
+  public function compile($pharFile, $name = 'foo-app', array $files = array(), array $directories = array(), $stub_file, $base_path, $name_pattern = '*.php', $strip = TRUE) {
     if (file_exists($pharFile)) {
       unlink($pharFile);
     }
@@ -22,8 +22,14 @@ class Compiler {
     $iterator = Finder::create()->files()->name($name_pattern)->in($directories);
     $files = array_merge($files, iterator_to_array($iterator));
     foreach ($files as $file) {
-        $path = str_replace($base_path . '/', '', $file);
+      $path = str_replace($base_path . '/', '', $file);
+
+      if ($strip) {
+        $phar->addFromString($path, php_strip_whitespace($file));
+      }
+      else {
         $phar->addFromString($path, file_get_contents($file));
+      }
     }
 
     $phar->setStub(file_get_contents($stub_file));
