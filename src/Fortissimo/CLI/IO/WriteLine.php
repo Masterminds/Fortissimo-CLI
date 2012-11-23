@@ -7,6 +7,9 @@ namespace Fortissimo\CLI\IO;
 
 /**
  * This command prints a message to output.
+ *
+ * The output datasource is expected to conform to the interface
+ * \Fortissimo\CLI\IO\Output.
  */
 class WriteLine extends \Fortissimo\Command\Base {
 
@@ -20,7 +23,7 @@ class WriteLine extends \Fortissimo\Command\Base {
 
   public function doCommand() {
     $text = $this->param('text');
-    $output = $this->param('output');
+    $output = $this->datasource('output');
 
     $output->writeln($text);
   }
