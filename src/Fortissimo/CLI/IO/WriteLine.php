@@ -17,13 +17,12 @@ class WriteLine extends \Fortissimo\Command\Base {
     return $this
       ->description('The line of test to display in the console.')
       ->usesParam('text', 'The text to display.')
-      ->usesParam('output', 'The console output object.')
       ;
   }
 
   public function doCommand() {
     $text = $this->param('text');
-    $output = $this->datasource('output');
+    $output = $this->context->datasource('output');
 
     $output->writeln($text);
   }
