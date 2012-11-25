@@ -22,10 +22,9 @@ class Compiler {
     // CLI Component files
     $iterator = Finder::create()->files()->name($name_pattern)->in($directories);
 
-    // There is some strange case where the higher priority adapters are not working
-    // by default but the PHP one works just fine to add all the files. So, we
-    // are specifying this. Since this shouldn't be how we do this.
-    // @todo fix the finder adapter.
+    // We need to set the adapter to use the PhpAdapter because we are working
+    // with Phar files and the higher priority ones by default in symfony can
+    // run into issues.
     $iterator->removeAdapters();
     $iterator->addAdapter(new PhpAdapter());
 
