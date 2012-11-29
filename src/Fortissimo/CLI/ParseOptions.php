@@ -21,7 +21,6 @@ class ParseOptions extends \Fortissimo\Command\Base {
         ->whichHasDefault('')
       ->usesParam('usage', 'Usage information, e.g. "%s [--OPTIONS] ARGS". The %s is filled with the command name.')
         ->whichHasDefault('')
-      ->usesParam('output', 'An output object.')
       ->andReturns('An Instance of \Symfony\Component\Console\Input\ArgvInput with all the options and arguments.')
     ;
   }
@@ -31,7 +30,7 @@ class ParseOptions extends \Fortissimo\Command\Base {
     $helpText = $this->param('help');
     $options = $this->param('options', NULL);
     $usage = $this->param('usage');
-    $output = $this->param('output'); 
+    $output = $this->context->datasource('output'); 
 
     // Add Help to the optionSpec
     $optionSpec->addOption(new InputOption('help', NULL, InputOption::VALUE_NONE, 'Display the help message.')); 
