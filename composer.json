@@ -2,8 +2,8 @@
   "name": "masterminds/fortissimo-cli",
   "description": "Some fortissimo cli application helpers.",
   "require": {
-    "masterminds/fortissimo": "2.x-dev",
-    "symfony/console": "2.x"
+    "masterminds/fortissimo": "3.0.0-alpha1",
+    "symfony/console": "2.1.*"
   },
   "authors": [
     {
