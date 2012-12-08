@@ -3,7 +3,8 @@
   "description": "Some fortissimo cli application helpers.",
   "require": {
     "masterminds/fortissimo": "3.0.0-alpha1",
-    "symfony/console": "2.1.*"
+    "symfony/console": "2.1.*",
+    "symfony/finder": "2.1.*",
   },
   "authors": [
     {
