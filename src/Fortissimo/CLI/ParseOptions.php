@@ -59,8 +59,9 @@ class ParseOptions extends \Fortissimo\Command\Base {
       $this->renderOutput($optionSpec, $helpText, $usage, $output);
     }
 
-    // Add the options to the context.
+    // Add the options and arguments to the context.
     $this->context->addAll($argv->getOptions());
+    $this->context->addAll($argv->getArguments());
 
     return $argv;
   }
