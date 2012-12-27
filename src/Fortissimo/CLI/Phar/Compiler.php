@@ -25,8 +25,8 @@ class Compiler {
     // We need to set the adapter to use the PhpAdapter because we are working
     // with Phar files and the higher priority ones by default in symfony can
     // run into issues.
-    $iterator->removeAdapters();
-    $iterator->addAdapter(new PhpAdapter());
+    //$iterator->removeAdapters();
+    //$iterator->addAdapter(new PhpAdapter());
 
     $files = array_merge($files, iterator_to_array($iterator));
     foreach ($files as $file) {
